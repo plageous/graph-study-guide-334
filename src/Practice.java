@@ -33,7 +33,8 @@ public class Practice {
     if (vertex == null || visited.contains(vertex)) return 0;
     visited.add(vertex);
 
-    int total = 1;
+    int total = 0;
+    if (vertex.data % 2 != 0) total ++;
 
     for (Vertex<Integer> neighbor : vertex.neighbors) {
       total += oddVertices(neighbor, visited);
