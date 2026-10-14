@@ -165,6 +165,18 @@ public class Practice {
   private static boolean positivePathExists(Map<Integer, Set<Integer>> graph, int current, int target, Set<Integer> visited) {
     if (current == target) return true; // target = ending, and ending > 0, so no need to check for negative values
     if (visited.contains(current)) return false;
+    visited.add(current);
+    if (current < 0) return false;
+
+    for (int neighbor : graph.get(current)) {
+      if (positivePathExists(graph, neighbor, target, visited)) {
+        return true;
+      } else {
+        continue;
+      }
+    }
+
+    return false;
   }
 
   /**
