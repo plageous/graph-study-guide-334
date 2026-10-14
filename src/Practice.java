@@ -275,5 +275,16 @@ public class Practice {
   public static List<int[]> nextMoves(char[][] board, int[] current, int[][] directions) {
     int row = current[0], col = current[1];
     List<int[]> validMoves = new ArrayList<>();
+
+    for (int i = 0; i < directions.length; i++) {
+      int nRow = row + directions[i][0];
+      int nCol = col + directions[i][1];
+
+      if (nRow >= 0 && nRow < board.length && nCol >= 0 && nCol < board[nRow].length && board[nRow][nCol] != 'X') {
+        validMoves.add(new int[]{nRow, nCol});
+      }
+    }
+
+    return validMoves;
   }
 }
